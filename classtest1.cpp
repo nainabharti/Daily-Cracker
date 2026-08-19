@@ -145,6 +145,7 @@ int main(){
 }
 */
 //multiplication of matrix
+/*
 #include<iostream>
 using namespace std;
 int main (){
@@ -184,6 +185,47 @@ int main (){
     for(int i=0; i<r1; i++)
     {
         for(int j=0; j<c2; j++){
+            cout<<result[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+*/
+//division of matrix
+#include<iostream>
+using namespace std;
+int main(){
+    int a[100][100],b[100][100],result[100][100];
+    int r,c;
+    cout<<"Enter no. of rows: ";
+    cin>> r;
+    cout<<"Enter no. of columns: ";
+    cin>> c;
+    cout<<"Enter elements of first matrix:\n";
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cin>>a[i][j];
+        }
+    }
+    cout<<"Enter elements of second matrix:\n";
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cin>>b[i][j];
+        }
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            if(b[i][j] == 0){
+                cout<<"Division by zero is not possible.";
+                return 0;
+            }
+            result[i][j]=(float)a[i][j]/b[i][j];
+        }
+    }
+    cout<<"Result of division:\n";
+    for(int i=0; i<r; i++){
+        for(int j=0;j<c;j++){
             cout<<result[i][j]<<" ";
         }
         cout<<endl;
