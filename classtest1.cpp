@@ -69,6 +69,7 @@ return 0;
 }
 */
 //addition of matrix
+/*
 #include<iostream>
 using namespace std;
 int main(){
@@ -99,6 +100,43 @@ int main(){
     for(int i=0;i<r;i++){
         for(int j=0;j<c;j++){
             cout<<sum[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+*/
+//subtraction of matrix
+#include<iostream>
+using namespace std;
+int main(){
+    int r, c;
+    int a[100][100], b[100][100],sub[100][100];
+    cout<<"Enter the number of rows: ";
+    cin>> r;
+    cout<<"Enter the number of columns: ";
+    cin>> c;
+    cout<<"Enter elements of first matrix:\n";
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cin>>a[i][j];
+        }
+    }
+    cout<<"Enter elements of second matrix:\n";
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cin>>b[i][j];
+        }
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            sub[i][j]=a[i][j]-b[i][j];
+        }
+    }
+    cout<<"Subtraction of the two matrices:\n";
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cout<<sub[i][j]<<" ";
         }
         cout<<endl;
     }
