@@ -20,6 +20,7 @@ for(int i=0;i<3;i++){
 return 0;
 }
 */
+/*
 //column major
 #include<iostream>
 using namespace std;
@@ -37,6 +38,30 @@ cout<<"The column major order is: ";
 for(int i=0;i<3;i++){
     for(int j=0;j<3;j++){
         cout<<b[j][i]<<" ";
+    }
+}
+return 0;
+}
+*/
+// diagonal matrix
+#include<iostream>
+using namespace std;
+int main()
+{
+int b[10][10];
+int i,j;
+cout<<"The Elements of the matrix is: ";
+for(int i=0; i<3; i++){
+    for(int j=0; j<3; j++){
+        cin>>b[i][j];
+    }
+}
+cout<<"The elements of the diagonal matrix is: ";
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        if (i==j){
+            cout<< b[i][j] <<" ";
+        }
     }
 }
 return 0;
