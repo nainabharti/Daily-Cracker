@@ -193,6 +193,7 @@ int main (){
 }
 */
 //division of matrix
+/*
 #include<iostream>
 using namespace std;
 int main(){
@@ -229,6 +230,33 @@ int main(){
             cout<<result[i][j]<<" ";
         }
         cout<<endl;
+    }
+    return 0;
+}
+*/
+//linear search
+#include<iostream>
+using namespace std;
+int linearsearch(int arr[] ,int size, int target)
+{
+    for(int i=0;i<size;i++){
+        if(arr[i]==target){
+            return i;
+        }
+    }
+    return -1;
+}
+int main (){
+    int target;
+    int arr[]={12,45,2,8,34};
+    int size= sizeof(arr) / sizeof(arr[0]);
+    cout<<"enter the element you want to search for: ";
+    cin>>target;
+    int result =linearsearch(arr,size,target);
+    if(result != -1){
+        cout<<"Element found at index: "<< result <<endl;
+    } else {
+        cout<<" Element not found in array." << endl;
     }
     return 0;
 }
