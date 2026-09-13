@@ -301,7 +301,7 @@ int main() {
 }
 */
    //list
-
+/*
  #include <iostream>
 #include <list>
 using namespace std;
@@ -436,3 +436,72 @@ int main() {
     explainList();
     return 0;
 }  
+*/
+//deque
+
+#include <iostream>
+#include <deque>
+using namespace std;
+
+void explainDeque() {
+    deque<int> dq;
+
+    // 1. push_back
+    dq.push_back(1);
+
+    cout << "1. After push_back(1): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 2. emplace_back
+    dq.emplace_back(2);
+
+    cout << "2. After emplace_back(2): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 3. push_front
+    dq.push_front(4);
+
+    cout << "3. After push_front(4): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 4. emplace_front
+    dq.emplace_front(3);
+
+    cout << "4. After emplace_front(3): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 5. pop_back
+    dq.pop_back();
+
+    cout << "5. After pop_back(): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 6. pop_front
+    dq.pop_front();
+
+    cout << "6. After pop_front(): ";
+    for (auto x : dq)
+        cout << x << " ";
+    cout << endl;
+
+    // 7. back()
+    cout << "7. Back element: " << dq.back() << endl;
+
+    // 8. front()
+    cout << "8. Front element: " << dq.front() << endl;
+}
+
+int main() {
+    explainDeque();
+    return 0;
+}
