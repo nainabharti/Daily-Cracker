@@ -95,118 +95,207 @@ int main()
 #include <utility>
 using namespace std;
 
-void explainVector()
-{
-    // 1. Basic vector
+void explainVector() {
+    // 1. Basic push_back and emplace_back
     vector<int> v;
+
     v.push_back(1);
     v.emplace_back(2);
 
-    cout << "Vector: ";
+    cout << "1. Basic push and emplace: ";
     for (auto x : v)
         cout << x << " ";
     cout << endl;
 
     // 2. Vector of pairs
     vector<pair<int, int>> vec;
+
     vec.push_back({1, 2});
     vec.emplace_back(3, 4);
 
-    cout << "Vector of pairs: ";
+    cout << "2. Vector of pairs: ";
     for (auto p : vec)
         cout << "{" << p.first << "," << p.second << "} ";
     cout << endl;
 
-    // 3. Vector with size and value
+    // 3. Vector with size and default value
     vector<int> v_hundred(5, 100);
-    // {100, 100, 100, 100, 100}
 
+    cout << "3. Vector (5,100): ";
+    for (auto x : v_hundred)
+        cout << x << " ";
+    cout << endl;
+
+    // 4. Vector with size only
     vector<int> v_size(5);
-    // {0, 0, 0, 0, 0}
 
-    // 4. Copy of a vector
+    cout << "4. Vector (5): ";
+    for (auto x : v_size)
+        cout << x << " ";
+    cout << endl;
+
+    // 5. Vector initialization
     vector<int> v1(5, 20);
-    vector<int> v2(v1);
 
-    cout << "v1: ";
+    cout << "5. v1: ";
     for (auto x : v1)
         cout << x << " ";
+    cout << endl;
 
-    cout << "\nv2: ";
+    // 6. Copy of vector
+    vector<int> v2(v1);
+
+    cout << "6. v2 (copy of v1): ";
     for (auto x : v2)
         cout << x << " ";
     cout << endl;
 
-    // 5. Iterator
+    // 7. Iterator
     vector<int> numbers = {10, 20, 15, 6, 7};
 
     vector<int>::iterator it = numbers.begin();
 
-    cout << "First element: " << *it << endl;
-
     it++;
-    cout << "After it++: " << *it << endl;
+    cout << "7. After it++: " << *it << endl;
 
     it = it + 2;
-    cout << "After it+2: " << *it << endl;
+    cout << "   After it+2: " << *it << endl;
 
-    // 6. Types of iterators
+    // 8. Types of iterators
     vector<int>::iterator it_end = numbers.end();
     vector<int>::reverse_iterator it_rbegin = numbers.rbegin();
     vector<int>::reverse_iterator it_rend = numbers.rend();
 
-    // 7. Element access
-    cout << "numbers[0]: " << numbers[0] << endl;
-    cout << "numbers.at(0): " << numbers.at(0) << endl;
-    cout << "numbers.back(): " << numbers.back() << endl;
+    cout << "8. Iterator types created successfully." << endl;
 
-    // 8. Using explicit iterator
-    cout << "Using iterator: ";
+    // 9. Element access
+    cout << "9. numbers[0]: " << numbers[0] << endl;
+    cout << "   numbers.at(0): " << numbers.at(0) << endl;
+    cout << "   numbers.back(): " << numbers.back() << endl;
+
+    // 10. Explicit iterator
+    cout << "10. Using explicit iterator: ";
     for (vector<int>::iterator it = numbers.begin();
-         it != numbers.end(); it++)
-    {
+         it != numbers.end(); it++) {
         cout << *it << " ";
     }
     cout << endl;
 
-    // 9. Using auto iterator
-    cout << "Using auto: ";
-    for (auto it = numbers.begin(); it != numbers.end(); it++)
+    // 11. Auto iterator
+    cout << "11. Using auto iterator: ";
+    for (auto it = numbers.begin(); it != numbers.end(); it++) {
         cout << *it << " ";
+    }
     cout << endl;
 
-    // 10. Range-based for loop
-    cout << "Using range-based loop: ";
+    // 12. Range-based for loop
+    cout << "12. Using range-based loop: ";
+    for (auto x : numbers) {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    // 13. Insert single element
+    vector<int> insertVector(2, 100);
+
+    cout << "13. Before insert: ";
+    for (auto x : insertVector)
+        cout << x << " ";
+    cout << endl;
+
+    insertVector.insert(insertVector.begin(), 300);
+
+    cout << "    After inserting 300: ";
+    for (auto x : insertVector)
+        cout << x << " ";
+    cout << endl;
+
+    // 14. Insert multiple elements
+    insertVector.insert(insertVector.begin() + 1, 2, 10);
+
+    cout << "14. After inserting two 10s: ";
+    for (auto x : insertVector)
+        cout << x << " ";
+    cout << endl;
+
+    // 15. Copy another vector using insert
+    vector<int> copy(2, 50);
+
+    insertVector.insert(insertVector.begin(), copy.begin(), copy.end());
+
+    cout << "15. After copying {50,50}: ";
+    for (auto x : insertVector)
+        cout << x << " ";
+    cout << endl;
+
+    // 16. Erase single element
+    numbers.erase(numbers.begin() + 1);
+
+    cout << "16. After single erase: ";
     for (auto x : numbers)
         cout << x << " ";
     cout << endl;
 
-    // 11. Erase single element
-    vector<int> eraseExample = {10, 20, 12, 23, 35};
+    // 17. Erase a range
+    numbers.erase(numbers.begin() + 1, numbers.begin() + 3);
 
-    eraseExample.erase(eraseExample.begin() + 1);
-    // Removes 20
-
-    cout << "After single erase: ";
-    for (auto x : eraseExample)
+    cout << "17. After range erase: ";
+    for (auto x : numbers)
         cout << x << " ";
     cout << endl;
 
-    // 12. Erase a range
-    vector<int> rangeExample = {10, 20, 12, 23, 35};
+    // 18. Size
+    cout << "18. Size of numbers: " << numbers.size() << endl;
 
-    rangeExample.erase(rangeExample.begin() + 2,
-                       rangeExample.begin() + 4);
-    // Removes 12 and 23
+    // 19. pop_back
+    numbers.pop_back();
 
-    cout << "After range erase: ";
-    for (auto x : rangeExample)
+    cout << "19. After pop_back: ";
+    for (auto x : numbers)
         cout << x << " ";
     cout << endl;
+
+    // 20. Swap
+    vector<int> a = {10, 20};
+    vector<int> b = {30, 40};
+
+    cout << "20. Before swap:" << endl;
+    cout << "    a: ";
+    for (auto x : a)
+        cout << x << " ";
+    cout << endl;
+
+    cout << "    b: ";
+    for (auto x : b)
+        cout << x << " ";
+    cout << endl;
+
+    a.swap(b);
+
+    cout << "    After swap:" << endl;
+    cout << "    a: ";
+    for (auto x : a)
+        cout << x << " ";
+    cout << endl;
+
+    cout << "    b: ";
+    for (auto x : b)
+        cout << x << " ";
+    cout << endl;
+
+    // 21. Clear
+    numbers.clear();
+
+    cout << "21. After clear: ";
+    for (auto x : numbers)
+        cout << x << " ";
+    cout << "(empty)" << endl;
+
+    // 22. Empty
+    cout << "22. Is numbers empty? " << numbers.empty() << endl;
 }
 
-int main()
-{
+int main() {
     explainVector();
     return 0;
 }
