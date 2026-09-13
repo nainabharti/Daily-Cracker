@@ -438,7 +438,7 @@ int main() {
 }  
 */
 //deque
-
+/*
 #include <iostream>
 #include <deque>
 using namespace std;
@@ -503,5 +503,31 @@ void explainDeque() {
 
 int main() {
     explainDeque();
+    return 0;
+}
+*/
+//stack
+
+#include<iostream>
+#include<stack>
+using namespace std;
+void explainStack(){
+    //LIFO -> Last In First Out
+    stack<int> st;
+    st.push(1); //{1}
+    st.push(2); //{2, 1}
+    st.push(3); //{3, 2, 1}
+    st.push(3); //{3,3,2,1}
+    st.emplace(5); //{5, 3, 3, 2, 1}
+    cout<<st.top()<<endl; //prints 5
+    st.pop();//removes 5
+    cout<<st.top()<<endl;//prints 3
+    cout<<st.size()<<endl;//prints 4
+    cout<<st.empty()<<endl;//prints 0
+    stack<int> st1, st2;
+    st1.swap(st2);//swap contents
+}
+int main() {
+    explainStack();
     return 0;
 }
