@@ -1,3 +1,5 @@
+/*
+//pairs
 #include <iostream>
 #include <utility>
 using namespace std;
@@ -83,5 +85,128 @@ int main()
     cout << "Name: " << student.first << endl;
     cout << "Age: " << student.second << endl;
 
+    return 0;
+}
+*/
+//void
+
+#include <iostream>
+#include <vector>
+#include <utility>
+using namespace std;
+
+void explainVector()
+{
+    // 1. Basic vector
+    vector<int> v;
+    v.push_back(1);
+    v.emplace_back(2);
+
+    cout << "Vector: ";
+    for (auto x : v)
+        cout << x << " ";
+    cout << endl;
+
+    // 2. Vector of pairs
+    vector<pair<int, int>> vec;
+    vec.push_back({1, 2});
+    vec.emplace_back(3, 4);
+
+    cout << "Vector of pairs: ";
+    for (auto p : vec)
+        cout << "{" << p.first << "," << p.second << "} ";
+    cout << endl;
+
+    // 3. Vector with size and value
+    vector<int> v_hundred(5, 100);
+    // {100, 100, 100, 100, 100}
+
+    vector<int> v_size(5);
+    // {0, 0, 0, 0, 0}
+
+    // 4. Copy of a vector
+    vector<int> v1(5, 20);
+    vector<int> v2(v1);
+
+    cout << "v1: ";
+    for (auto x : v1)
+        cout << x << " ";
+
+    cout << "\nv2: ";
+    for (auto x : v2)
+        cout << x << " ";
+    cout << endl;
+
+    // 5. Iterator
+    vector<int> numbers = {10, 20, 15, 6, 7};
+
+    vector<int>::iterator it = numbers.begin();
+
+    cout << "First element: " << *it << endl;
+
+    it++;
+    cout << "After it++: " << *it << endl;
+
+    it = it + 2;
+    cout << "After it+2: " << *it << endl;
+
+    // 6. Types of iterators
+    vector<int>::iterator it_end = numbers.end();
+    vector<int>::reverse_iterator it_rbegin = numbers.rbegin();
+    vector<int>::reverse_iterator it_rend = numbers.rend();
+
+    // 7. Element access
+    cout << "numbers[0]: " << numbers[0] << endl;
+    cout << "numbers.at(0): " << numbers.at(0) << endl;
+    cout << "numbers.back(): " << numbers.back() << endl;
+
+    // 8. Using explicit iterator
+    cout << "Using iterator: ";
+    for (vector<int>::iterator it = numbers.begin();
+         it != numbers.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // 9. Using auto iterator
+    cout << "Using auto: ";
+    for (auto it = numbers.begin(); it != numbers.end(); it++)
+        cout << *it << " ";
+    cout << endl;
+
+    // 10. Range-based for loop
+    cout << "Using range-based loop: ";
+    for (auto x : numbers)
+        cout << x << " ";
+    cout << endl;
+
+    // 11. Erase single element
+    vector<int> eraseExample = {10, 20, 12, 23, 35};
+
+    eraseExample.erase(eraseExample.begin() + 1);
+    // Removes 20
+
+    cout << "After single erase: ";
+    for (auto x : eraseExample)
+        cout << x << " ";
+    cout << endl;
+
+    // 12. Erase a range
+    vector<int> rangeExample = {10, 20, 12, 23, 35};
+
+    rangeExample.erase(rangeExample.begin() + 2,
+                       rangeExample.begin() + 4);
+    // Removes 12 and 23
+
+    cout << "After range erase: ";
+    for (auto x : rangeExample)
+        cout << x << " ";
+    cout << endl;
+}
+
+int main()
+{
+    explainVector();
     return 0;
 }
