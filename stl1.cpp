@@ -89,7 +89,7 @@ int main()
 }
 */
 //void
-
+/*
 #include <iostream>
 #include <vector>
 #include <utility>
@@ -299,3 +299,140 @@ int main() {
     explainVector();
     return 0;
 }
+*/
+   //list
+
+ #include <iostream>
+#include <list>
+using namespace std;
+
+void explainList() {
+    list<int> ls;
+
+    // 1. push_back
+    ls.push_back(2);
+
+    cout << "1. After push_back(2): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 2. emplace_back
+    ls.emplace_back(4);
+
+    cout << "2. After emplace_back(4): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 3. push_front
+    ls.push_front(5);
+
+    cout << "3. After push_front(5): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 4. emplace_front
+    ls.emplace_front(1);
+
+    cout << "4. After emplace_front(1): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 5. Access front element
+    cout << "5. Front element: " << ls.front() << endl;
+
+    // 6. Access back element
+    cout << "6. Back element: " << ls.back() << endl;
+
+    // 7. Remove first element
+    ls.pop_front();
+
+    cout << "7. After pop_front(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 8. Remove last element
+    ls.pop_back();
+
+    cout << "8. After pop_back(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 9. Insert an element
+    auto it = ls.begin();
+    ++it;
+
+    ls.insert(it, 10);
+
+    cout << "9. After insert(10): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 10. Erase an element
+    it = ls.begin();
+    ++it;
+
+    ls.erase(it);
+
+    cout << "10. After erase(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 11. Size
+    cout << "11. Size: " << ls.size() << endl;
+
+    // 12. Remove a particular value
+    ls.push_back(2);
+    ls.push_back(2);
+
+    cout << "12. Before remove(2): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    ls.remove(2);
+
+    cout << "    After remove(2): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 13. Reverse
+    ls.reverse();
+
+    cout << "13. After reverse(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 14. Sort
+    ls.sort();
+
+    cout << "14. After sort(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << endl;
+
+    // 15. Clear
+    ls.clear();
+
+    cout << "15. After clear(): ";
+    for (auto x : ls)
+        cout << x << " ";
+    cout << "(empty)" << endl;
+
+    // 16. Empty
+    cout << "16. Is list empty? " << ls.empty() << endl;
+}
+
+int main() {
+    explainList();
+    return 0;
+}  
