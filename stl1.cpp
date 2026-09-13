@@ -507,7 +507,7 @@ int main() {
 }
 */
 //stack
-
+/*
 #include<iostream>
 #include<stack>
 using namespace std;
@@ -529,5 +529,410 @@ void explainStack(){
 }
 int main() {
     explainStack();
+    return 0;
+}
+*/
+
+#include <iostream>
+#include <queue>
+#include <set>
+#include <unordered_set>
+#include <map>
+#include <unordered_map>
+#include <algorithm>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Custom Comparator for Pairs
+bool comp(pair<int, int> p1, pair<int, int> p2) {
+    if (p1.second < p2.second)
+        return true;
+
+    if (p1.second > p2.second)
+        return false;
+
+    return p1.first > p2.first;
+}
+
+// 1. QUEUE
+// FIFO -> First In First Out
+void explainQueue() {
+    queue<int> q;
+
+    q.push(1);
+    cout << "After push(1): " << q.front() << endl;
+
+    q.push(2);
+    cout << "After push(2): Front = " << q.front()
+         << ", Back = " << q.back() << endl;
+
+    q.emplace(4);
+    cout << "After emplace(4): Front = " << q.front()
+         << ", Back = " << q.back() << endl;
+
+    q.back() += 5;
+    cout << "After back() += 5: Back = " << q.back() << endl;
+
+    cout << "Front element: " << q.front() << endl;
+
+    q.pop();
+    cout << "After pop(): Front = " << q.front() << endl;
+}
+
+// 2. PRIORITY QUEUE
+void explainPQ() {
+    // Max Heap
+    priority_queue<int> pq;
+
+    pq.push(5);
+    pq.push(2);
+    pq.push(8);
+    pq.emplace(10);
+
+    cout << "Max Heap top: " << pq.top() << endl;
+
+    pq.pop();
+    cout << "After pop(): " << pq.top() << endl;
+
+    // Min Heap
+    priority_queue<int, vector<int>, greater<int>> pq_min;
+
+    pq_min.push(5);
+    pq_min.push(2);
+    pq_min.push(8);
+    pq_min.emplace(10);
+
+    cout << "Min Heap top: " << pq_min.top() << endl;
+}
+
+// 3. SET
+// Sorted + Unique
+void explainSet() {
+    set<int> st;
+
+    st.insert(1);
+    cout << "After insert(1): ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    st.emplace(2);
+    cout << "After emplace(2): ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    st.insert(2);
+    cout << "After insert(2) again: ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    st.insert(4);
+    st.insert(3);
+    cout << "After insert(4), insert(3): ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    // Find
+    auto it = st.find(3);
+
+    if (it != st.end())
+        cout << "find(3): " << *it << endl;
+
+    auto it_not = st.find(6);
+
+    if (it_not == st.end())
+        cout << "find(6): Not Found" << endl;
+
+    // Erase
+    st.erase(5);
+    cout << "After erase(5): ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    // Count
+    int cnt = st.count(1);
+    cout << "count(1): " << cnt << endl;
+
+    // Erase using iterator
+    auto it_erase = st.find(3);
+    st.erase(it_erase);
+
+    cout << "After erasing 3: ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    // Range erase
+    auto it1 = st.find(2);
+    auto it2 = st.find(4);
+
+    st.erase(it1, it2);
+
+    cout << "After range erase: ";
+    for (auto x : st)
+        cout << x << " ";
+    cout << endl;
+
+    // Lower bound
+    auto lb = st.lower_bound(2);
+
+    if (lb != st.end())
+        cout << "lower_bound(2): " << *lb << endl;
+
+    // Upper bound
+    auto ub = st.upper_bound(3);
+
+    if (ub != st.end())
+        cout << "upper_bound(3): " << *ub << endl;
+}
+
+// 4. MULTISET
+// Sorted + Duplicate elements allowed
+void explainMultiset() {
+    multiset<int> ms;
+
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(1);
+
+    cout << "After inserting 1 three times: ";
+    for (auto x : ms)
+        cout << x << " ";
+    cout << endl;
+
+    int cnt = ms.count(1);
+    cout << "count(1): " << cnt << endl;
+
+    // Erase only one occurrence
+    ms.erase(ms.find(1));
+
+    cout << "After erasing one 1: ";
+    for (auto x : ms)
+        cout << x << " ";
+    cout << endl;
+}
+
+// 5. UNORDERED SET
+// Unique + Not Sorted
+void explainUSet() {
+    unordered_set<int> st;
+
+    st.insert(1);
+    st.insert(2);
+    st.insert(3);
+    st.insert(2);
+
+    cout << "Unordered Set: ";
+
+    for (auto x : st)
+        cout << x << " ";
+
+    cout << endl;
+}
+
+// 6. MAP
+// Unique Keys + Sorted Order
+void explainMap() {
+    map<int, int> mpp;
+
+    map<int, pair<int, int>> mpp_pair;
+
+    map<pair<int, int>, int> mpp_nested;
+
+    mpp[1] = 2;
+    mpp.emplace(3, 1);
+    mpp.insert({2, 4});
+
+    mpp_nested[{2, 3}] = 10;
+
+    cout << "Map elements:" << endl;
+
+    for (auto it : mpp)
+        cout << it.first << " " << it.second << endl;
+
+    cout << "mpp[1]: " << mpp[1] << endl;
+
+    cout << "mpp[5]: " << mpp[5] << endl;
+
+    auto it = mpp.find(3);
+
+    if (it != mpp.end())
+        cout << "Value of key 3: " << it->second << endl;
+
+    auto lb = mpp.lower_bound(2);
+
+    if (lb != mpp.end())
+        cout << "lower_bound(2): "
+             << lb->first << " " << lb->second << endl;
+
+    auto ub = mpp.upper_bound(3);
+
+    if (ub != mpp.end())
+        cout << "upper_bound(3): "
+             << ub->first << " " << ub->second << endl;
+}
+
+// 7. MULTIMAP
+// Duplicate Keys + Sorted
+void explainMultimap() {
+    multimap<int, int> mpp;
+
+    mpp.insert({1, 10});
+    mpp.insert({1, 20});
+    mpp.insert({2, 30});
+
+    cout << "Multimap elements:" << endl;
+
+    for (auto it : mpp)
+        cout << it.first << " " << it.second << endl;
+}
+
+// 8. UNORDERED MAP
+// Unique Keys + Not Sorted
+void explainUnorderedMap() {
+    unordered_map<int, int> mpp;
+
+    mpp[1] = 10;
+    mpp[2] = 20;
+    mpp[3] = 30;
+
+    cout << "Unordered Map elements:" << endl;
+
+    for (auto it : mpp)
+        cout << it.first << " " << it.second << endl;
+}
+
+// 9. ALGORITHMS
+void explainExtra() {
+    int a[] = {1, 5, 2, 4, 3};
+
+    int n = sizeof(a) / sizeof(a[0]);
+
+    // Sort array
+    sort(a, a + n);
+
+    cout << "Sorted array: ";
+
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+
+    cout << endl;
+
+    // Sort vector
+    vector<int> v = {1, 5, 2, 4, 3};
+
+    sort(v.begin(), v.end());
+
+    cout << "Sorted vector: ";
+
+    for (auto x : v)
+        cout << x << " ";
+
+    cout << endl;
+
+    // Sort partial range
+    int b[] = {1, 5, 2, 4, 3};
+
+    sort(b + 2, b + 4);
+
+    cout << "Partial sorted array: ";
+
+    for (int i = 0; i < 5; i++)
+        cout << b[i] << " ";
+
+    cout << endl;
+
+    // Sort in descending order
+    sort(a, a + n, greater<int>());
+
+    cout << "Descending order: ";
+
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+
+    cout << endl;
+
+    // Sort pairs using custom comparator
+    pair<int, int> arr_p[] = {
+        {1, 2},
+        {2, 1},
+        {4, 1}
+    };
+
+    int n_p = sizeof(arr_p) / sizeof(arr_p[0]);
+
+    sort(arr_p, arr_p + n_p, comp);
+
+    cout << "Sorted pairs: ";
+
+    for (int i = 0; i < n_p; i++)
+        cout << "{" << arr_p[i].first
+             << "," << arr_p[i].second << "} ";
+
+    cout << endl;
+
+    // Count set bits
+    int num = 7;
+
+    int cnt = __builtin_popcount(num);
+
+    cout << "Set bits in 7: " << cnt << endl;
+
+    long long num_ll = 165786578687LL;
+
+    int cnt_ll = __builtin_popcountll(num_ll);
+
+    cout << "Set bits in long long number: "
+         << cnt_ll << endl;
+
+    // Permutations
+    string s = "123";
+
+    cout << "Permutations:" << endl;
+
+    do {
+        cout << s << endl;
+    } while (next_permutation(s.begin(), s.end()));
+
+    // Maximum element
+    int maxi = *max_element(a, a + n);
+
+    cout << "Maximum element: " << maxi << endl;
+}
+
+int main() {
+    cout << "===== QUEUE =====" << endl;
+    explainQueue();
+
+    cout << "\n===== PRIORITY QUEUE =====" << endl;
+    explainPQ();
+
+    cout << "\n===== SET =====" << endl;
+    explainSet();
+
+    cout << "\n===== MULTISET =====" << endl;
+    explainMultiset();
+
+    cout << "\n===== UNORDERED SET =====" << endl;
+    explainUSet();
+
+    cout << "\n===== MAP =====" << endl;
+    explainMap();
+
+    cout << "\n===== MULTIMAP =====" << endl;
+    explainMultimap();
+
+    cout << "\n===== UNORDERED MAP =====" << endl;
+    explainUnorderedMap();
+
+    cout << "\n===== ALGORITHMS =====" << endl;
+    explainExtra();
+
     return 0;
 }
