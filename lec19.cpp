@@ -112,6 +112,7 @@ int main()
 }
 */
 // print all divisor 
+/*
 #include<bits/stdc++.h>
 #include<iostream>
 using namespace std;
@@ -136,4 +137,26 @@ int main()
      cin>>n;
      printdivisors(n);
      return 0;
+}
+*/
+//prime number
+#include<iostream>
+using namespace std;
+int main(){
+     int n;
+     cout<<"Enter the number: ";
+     cin>>n;
+     int count = 0;
+     for(int i = 1; i*i<=n; i++){
+          if(n%i == 0){
+               count++;
+               if((n/i) != i){
+                    count ++;
+               }
+          } 
+     }
+     if(count == 2)
+     cout<<" Prime number ";
+     else
+     cout<<" not a prime number ";
 }
