@@ -89,6 +89,7 @@ int main(){
 }
 */
 //armstrong number
+/*
 #include<iostream>
 using namespace std;
 int main()
@@ -108,4 +109,31 @@ int main()
      cout<<"the given number is armstrong number.";
      else
      cout<<"the given number is not armstrong number.";
+}
+*/
+// print all divisor 
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+void printdivisors(int n){
+     vector<int>ls;
+     for(int i=1;i<sqrt(n);i++){
+          if(n%i == 0){
+               ls.push_back(i);
+               if((n/i)!=i){
+                    ls.push_back(n/i);
+               }
+          }
+     }
+     sort(ls.begin(),ls.end());
+     for(auto it : ls)
+     cout<< it <<" ";
+}
+int main()
+{
+     int n;
+     cout<<"enter the number: ";
+     cin>>n;
+     printdivisors(n);
+     return 0;
 }
