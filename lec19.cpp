@@ -68,6 +68,7 @@ int main() {
 }
 */
 //palindrome of a number
+/*
 #include<iostream>
 using namespace std;
 int main(){
@@ -85,4 +86,26 @@ int main(){
      cout<<"it is a palindrome";
      else
      cout<<"it is not a palindrome";
+}
+*/
+//armstrong number
+#include<iostream>
+using namespace std;
+int main()
+{
+     int n;
+     cout<<"Enter the number to check: "<<endl;
+     cin>>n;
+     int dup = n;
+     int sum = 0;
+     while(n>0)
+     {
+       int ld = n % 10;
+       sum = sum + ld*ld*ld;
+       n = n/10; 
+     }
+     if (sum == dup)
+     cout<<"the given number is armstrong number.";
+     else
+     cout<<"the given number is not armstrong number.";
 }
