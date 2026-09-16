@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -64,4 +65,24 @@ int main() {
     cout << endl;
 
     return 0;
+}
+*/
+//palindrome of a number
+#include<iostream>
+using namespace std;
+int main(){
+     int n;
+     cout<<"enter the number to check: "<<endl;
+     cin>>n;
+     int revnumber = 0;
+     int dup = n;
+     while(n>0){
+          int ld = n%10;
+          revnumber = revnumber*10 + ld;
+          n = n/10;
+     }
+     if (dup == revnumber)
+     cout<<"it is a palindrome";
+     else
+     cout<<"it is not a palindrome";
 }
