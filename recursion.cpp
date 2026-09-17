@@ -17,6 +17,7 @@ int main(){
 }
 */
 //print counting
+/*
 void function(int i, int n){
     if (i>n)
     return;
@@ -29,4 +30,18 @@ int main()
     cout<<"enter the number: ";
     cin>>n;
     function(1,n);
+}
+*/
+//print counting in reverse order
+void function(int i, int n){
+    if(i<1)
+    return;
+    cout<<i<<endl;
+    function(i-1,n);
+}
+int main(){
+    int n;
+    cout<<"enter number: ";
+    cin>>n;
+    function(n,n);
 }
