@@ -107,7 +107,8 @@ int main(){
     cout<<"the sum is: "<<function(n);
 }
 */
-//factorial
+//factorial(functional)
+/*
 int function(int n){
     if (n==0 || n==1)
     return 1;
@@ -118,4 +119,19 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     cout<<"the factorial of the number is: "<<function(n);
+}
+*/
+//factorial(parameterised)
+void function(int i, int factorial){
+    if (i<1){
+        cout<<"the factorial of the number is: "<<factorial<<endl;
+        return;
+    }
+    function(i-1,factorial*i);
+}
+int main(){
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    function(n,1);
 }
