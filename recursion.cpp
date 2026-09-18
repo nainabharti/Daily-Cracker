@@ -63,6 +63,7 @@ int main(){
 }
 */
 //print reverse counting using backtracking
+/*
 void function(int i, int n){
     if(i>n)
     return;
@@ -74,4 +75,19 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     function(1,n);
+}
+*/
+//sum of first n numbers (parameterised)
+void function(int i, int sum){
+    if(i<1){
+    cout<<"the sum is: "<<sum;
+    return;
+    }
+    function(i-1,sum+i);
+}
+int main(){
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    function(n,0);
 }
