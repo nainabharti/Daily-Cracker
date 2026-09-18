@@ -78,6 +78,7 @@ int main(){
 }
 */
 //sum of first n numbers (parameterised)
+/*
 void function(int i, int sum){
     if(i<1){
     cout<<"the sum is: "<<sum;
@@ -90,4 +91,17 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     function(n,0);
+}
+*/
+//sum of first n numbers (functional)
+int function(int n){
+    if(n==0)
+    return 0;
+    return n + function(n-1);
+}
+int main(){
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    cout<<"the sum is: "<<function(n);
 }
