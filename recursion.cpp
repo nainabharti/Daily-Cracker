@@ -94,6 +94,7 @@ int main(){
 }
 */
 //sum of first n numbers (functional)
+/*
 int function(int n){
     if(n==0)
     return 0;
@@ -104,4 +105,17 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     cout<<"the sum is: "<<function(n);
+}
+*/
+//factorial
+int function(int n){
+    if (n==0 || n==1)
+    return 1;
+    return n * function(n-1);
+}
+int main(){
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    cout<<"the factorial of the number is: "<<function(n);
 }
