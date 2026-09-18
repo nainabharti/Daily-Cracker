@@ -47,7 +47,8 @@ int main(){
     function(n,n);
 }
 */
-//
+//backtracking
+/*
 void function(int i,int n){
     if(i<1)
     return;
@@ -59,4 +60,18 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     function(n,n);
+}
+*/
+//print reverse counting using backtracking
+void function(int i, int n){
+    if(i>n)
+    return;
+    function(i+1,n);
+    cout<<i<<endl;
+}
+int main(){
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    function(1,n);
 }
