@@ -122,6 +122,7 @@ int main(){
 }
 */
 //factorial(parameterised)
+/*
 void function(int i, int factorial){
     if (i<1){
         cout<<"the factorial of the number is: "<<factorial<<endl;
@@ -134,4 +135,28 @@ int main(){
     cout<<"enter the number: ";
     cin>>n;
     function(n,1);
+}
+*/
+//reverse of an array usinng two variable
+void function(int l , int r , int arr[]){
+    if(l>=r)
+    return;
+    swap(arr[l], arr[r]);
+    function(l+1 , r-1, arr);
+}
+int main() {
+    int n;
+    cout<<"Enter number of elements: ";
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of the array: "<<endl;
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    function(0,n-1,arr);
+    cout<<"reverse array: ";
+    for(int i=0;i<n;i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
