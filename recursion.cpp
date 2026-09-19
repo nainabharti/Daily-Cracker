@@ -189,6 +189,7 @@ int main()
 }
 */
 //to check if a string is palindrome
+/*
 bool function(int i, string &s){
     if(i>=s.size()/2)
     return true;
@@ -201,5 +202,25 @@ int main(){
     cout<<"enter the string: ";
     cin>>s;
     cout<<function(0,s);
+    return 0;
+}
+*/
+//fabonacci number
+int function(int n){
+    if(n<=1)
+    return n;
+    int last = function(n-1);
+    int secondlast = function(n-2);
+    return last + secondlast;
+}
+int main(){
+    int n;
+    cout<<"Enter number: ";
+    cin>>n;
+    cout<<"Fibonacci series up to "<<n<<" terms: "<<endl;
+    for(int i=0;i<n;i++){
+        cout<<function(i)<<" ";
+    }
+    cout<<endl;
     return 0;
 }
