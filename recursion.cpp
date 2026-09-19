@@ -138,6 +138,7 @@ int main(){
 }
 */
 //reverse of an array usinng two variable
+/*
 void function(int l , int r , int arr[]){
     if(l>=r)
     return;
@@ -157,6 +158,31 @@ int main() {
     cout<<"reverse array: ";
     for(int i=0;i<n;i++) {
         cout << arr[i] << " ";
+    }
+    return 0;
+}
+*/
+//reverse using only single vriable
+void function(int i, int arr[], int n){
+    if(i>=n/2)
+    return;
+    swap(arr[i],arr[n-i-1]);
+    function(i+1,arr,n);
+}
+int main()
+{
+    int n;
+    cout<<"Enter the number of elements: ";
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of the array: ";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    function(0,arr,n);
+    cout<<"Reversed array: ";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
     }
     return 0;
 }
