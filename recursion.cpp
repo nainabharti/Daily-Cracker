@@ -163,6 +163,7 @@ int main() {
 }
 */
 //reverse using only single vriable
+/*
 void function(int i, int arr[], int n){
     if(i>=n/2)
     return;
@@ -184,5 +185,21 @@ int main()
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
     }
+    return 0;
+}
+*/
+//to check if a string is palindrome
+bool function(int i, string &s){
+    if(i>=s.size()/2)
+    return true;
+    if (s[i] != s[s.size()-i-1])
+    return false;
+    return function(i+1, s);
+}
+int main(){
+    string s;
+    cout<<"enter the string: ";
+    cin>>s;
+    cout<<function(0,s);
     return 0;
 }
