@@ -28,6 +28,8 @@ int main(){
     return 0;
 }
 */
+//character hashing using arrays
+/*
 int main(){
     string s;
     cout<<"Enter the string: ";
@@ -45,6 +47,37 @@ int main(){
         cin>>c;
         //fetch
         cout<<hash[c-'a']<<endl;
+    }
+    return 0;
+}
+*/
+//number hashing beyond 10^8
+int main(){
+    int n;
+    cout<<"Enter the number of elements: ";
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of the array: ";
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    //precompute
+    map<int, int>mpp;
+    for(int i=0; i<n; i++){
+        mpp[arr[i]]++;
+    }
+    //iterate the map
+    for(auto it:mpp){
+        cout<<it.first<<"->"<<it.second<<endl;
+    }
+    int q;
+    cout<<"Enter the number of query: ";
+    cin>>q;
+    while(q--){
+        int number;
+        cin>>number;
+        //fetch
+        cout<<mpp[number]<<endl;
     }
     return 0;
 }
